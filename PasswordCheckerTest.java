@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Test;
 /* ******************************************************** *
  * @author : Ndumiso Onke Fanti                             *
  * Description : Test Cases for the password methods        *
- * "oNke10222!" and its various combinations of letters will*
+ * "onke10222!" and its various combinations of letters will*
  *  be used as the test password                            *
  * ******************************************************** */
 public class PasswordCheckerTest {
@@ -11,6 +11,7 @@ public class PasswordCheckerTest {
     @Test
      void testExistence(){
         assert PasswordChecker.passwordExist("onke12345") : " Test Case Should PASS"; // test should pass because there exist a password entered with a certain length > 0
+        assert PasswordChecker.passwordExist(" ") : " Test Case Should PASS";         //test should pass
         //assert PasswordChecker.passwordExist("") : " Test Case Should FAIL";          // test should FAIL because there exists no password enter with a certain length
     }
     @Test
