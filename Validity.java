@@ -3,34 +3,40 @@
  * Description : PasswordIsValid and PasswordISOk Methods   *
  * ******************************************************** */
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 public class Validity extends  PasswordChecker{
+    private static final Logger logger = LogManager.getLogger(PasswordChecker.class.getName());
 
     public Validity() {
-        System.out.println("********************** Password Checker **********************\n");
+        logger.info("********************** Password Checker **********************\n");
     }
+
 
     public void passwordIsValid(String password){
 
         if(!passwordExist(password)){
-            System.out.println("password should exist");
+            logger.error("password should exist");
         }
         if(!passwordLength(password)){
-            System.out.println("password should be longer than than 8 characters");
+            logger.error("password should be longer than than 8 characters");
         }
         if(!checkLowerCaseCharacter(password)){
-            System.out.println("password should have at least one lowercase letter");
+            logger.error("password should have at least one lowercase letter");
         }
         if(!checkUpperCaseCharacter(password)){
-            System.out.println("password should have at least one uppercase letter");
+            logger.error("password should have at least one uppercase letter");
         }
         if(!checkNumber(password)){
-            System.out.println("password should at least have one digit");
+            logger.error("password should at least have one digit");
         }
         if(!checkSpecialCharacter(password)){
-            System.out.println("password should have at least one special character");
+            logger.error("password should have at least one special character");
         }
         else {
-            System.out.println("Password Valid");
+            logger.info("password should exist");
         }
     }
 
@@ -38,7 +44,7 @@ public class Validity extends  PasswordChecker{
 
     private static int passedConditionsCounter = 0;  // Counter to keep track of how many conditions are passed
 
-    public boolean passwordIsOk(String password){
+    public void passwordIsOk(String password){
         if(passwordExist(password)){
             passedConditionsCounter++;
         }
@@ -57,7 +63,11 @@ public class Validity extends  PasswordChecker{
         if(checkSpecialCharacter(password)){
             passedConditionsCounter++;
         }
+        if(passedConditionsCounter >= minimum){
+            logger.debug("User password is ok");
+        }else {
+            logger.debug("User password is not ok");
 
-        return(passedConditionsCounter >= minimum);
-    }
+        }}
+
 }

@@ -13,7 +13,7 @@ public class Main {
 
         validity.passwordIsValid(password);
         System.out.println("*****************************************************");
-        System.out.println(validity.passwordIsOk(password));
+        validity.passwordIsOk(password);
 
         System.out.println();
     }
