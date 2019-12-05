@@ -10,8 +10,9 @@ public class Validity extends  PasswordChecker{
     private static final Logger logger = LogManager.getLogger(PasswordChecker.class.getName());
 
     public Validity() {
-        logger.info("********************** Password Checker **********************");
+        System.out.println("********************** Password Checker **********************\n");
     }
+
 
     public void passwordIsValid(String password){
 
@@ -28,10 +29,13 @@ public class Validity extends  PasswordChecker{
             logger.error("password should have at least one uppercase letter");
         }
         if(!checkNumber(password)){
-            logger.error("password should have at least have one digit");
+            logger.error("password should at least have one digit");
         }
         if(!checkSpecialCharacter(password)){
             logger.error("password should have at least one special character");
+        }
+        else {
+            logger.info("password is valid");
         }
     }
 
@@ -60,10 +64,9 @@ public class Validity extends  PasswordChecker{
         }
         if(passedConditionsCounter >= minimum){
             logger.debug("User password is ok");
-            System.out.println("User password is ok");
         }else {
             logger.debug("User password is not ok");
-            System.out.println("User password not ok");
+
         }
     }
 
