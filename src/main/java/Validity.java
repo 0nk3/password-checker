@@ -6,10 +6,10 @@
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Validity extends  PasswordChecker{
+class Validity extends PasswordChecker {
     private static final Logger logger = LogManager.getLogger(PasswordChecker.class.getName());
 
-    public Validity() {
+    Validity() {
         System.out.println("********************** Password Checker **********************\n");
     }
 
@@ -18,66 +18,65 @@ public class Validity extends  PasswordChecker{
      * I will assume 6 as conditions passed, then reduce                     *
      * it by 1 everyvtime a condition is FAILED.                             *
      * ********************************************************************* */
-    public boolean passwordIsValid(String password){
+    boolean passwordIsValid(String password) {
 
-        int passedConditions = 6 ;
+        int passedConditions = 6;
 
-        if(!passwordExist(password)){
+        if (!passwordExist(password)) {
             logger.error("password should exist");
-            passedConditions --;
+            passedConditions--;
         }
-        if(!passwordLength(password)){
+        if (!passwordLength(password)) {
             logger.error("password should be longer than than 8 characters");
             passedConditions--;
         }
-        if(!checkLowerCaseCharacter(password)){
+        if (!checkLowerCaseCharacter(password)) {
             logger.error("password should have at least one lowercase letter");
             passedConditions--;
         }
-        if(!checkUpperCaseCharacter(password)){
+        if (!checkUpperCaseCharacter(password)) {
             logger.error("password should have at least one uppercase letter");
-            passedConditions --;
+            passedConditions--;
         }
-        if(!checkNumber(password)){
+        if (!checkNumber(password)) {
             logger.error("password should at least have one digit");
             passedConditions--;
         }
-        if(!checkSpecialCharacter(password)){
+        if (!checkSpecialCharacter(password)) {
             logger.error("password should have at least one special character");
             passedConditions--;
-        }
-        else {
+        } else {
             logger.info("password is valid");
         }
-     return (passedConditions >6);
+        return (passedConditions == 6);     // the value of passed conditions is expected to be 6  if non of the conditions failed.
     }
 
     private static final int minimum = 3;   // for the function to return true, a minimum of 3 conditions should be passed
 
     private static int passedConditionsCounter = 0;  // Counter to keep track of how many conditions are passed
 
-    public void passwordIsOk(String password){
-        if(passwordExist(password)){
+    void passwordIsOk(String password) {
+        if (passwordExist(password)) {
             passedConditionsCounter++;
         }
-        if(passwordLength(password)){
+        if (passwordLength(password)) {
             passedConditionsCounter++;
         }
-        if(checkLowerCaseCharacter(password)){
+        if (checkLowerCaseCharacter(password)) {
             passedConditionsCounter++;
         }
-        if(checkUpperCaseCharacter(password)){
+        if (checkUpperCaseCharacter(password)) {
             passedConditionsCounter++;
         }
-        if(checkNumber(password)){
+        if (checkNumber(password)) {
             passedConditionsCounter++;
         }
-        if(checkSpecialCharacter(password)){
+        if (checkSpecialCharacter(password)) {
             passedConditionsCounter++;
         }
-        if(passedConditionsCounter >= minimum){
+        if (passedConditionsCounter >= minimum) {
             logger.debug("User password is ok");
-        }else {
+        } else {
             logger.debug("User password is not ok");
 
         }
