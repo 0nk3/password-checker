@@ -45,15 +45,20 @@ class Validity extends PasswordChecker {
         if (!checkSpecialCharacter(password)) {
             logger.error("password should have at least one special character");
             passedConditions--;
-        } else {
-            logger.info("password is valid");
+        }if(passedConditions<6){
+            logger.debug("password is not ok");
         }
-        return (passedConditions == 6);     // the value of passed conditions is expected to be 6  if non of the conditions failed.
+        else {
+            logger.debug("password is ok");
+        }
+        // the value of passed conditions is expected to be 6  if non of the conditions failed.
+        return (passedConditions == 6);
     }
+    // for the function to return true, a minimum of 3 conditions should be passed
+    private static final int minimum = 3;
 
-    private static final int minimum = 3;   // for the function to return true, a minimum of 3 conditions should be passed
-
-    private static int passedConditionsCounter = 0;  // Counter to keep track of how many conditions are passed
+    // Counter to keep track of how many conditions are passed
+    public static int passedConditionsCounter = 0;
 
     void passwordIsOk(String password) {
         if (passwordExist(password)) {
@@ -75,9 +80,9 @@ class Validity extends PasswordChecker {
             passedConditionsCounter++;
         }
         if (passedConditionsCounter >= minimum) {
-            logger.debug("User password is ok");
+            logger.debug("password is ok");
         } else {
-            logger.debug("User password is not ok");
+            logger.debug("password is not ok");
 
         }
     }

@@ -5,15 +5,20 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String args[]) {
-
+        //Creating a Logger Object to log into a file
         final Logger logger = LogManager.getLogger(Main.class.getName());
 
+        // Validity object to access the method that checks if a password is ok or not
         Validity validity = new Validity();
-        Scanner input = new Scanner(System.in);
-        String password ;
 
+        //Scanner object to allows read input from keyboard
+        Scanner input = new Scanner(System.in);
+
+        String password ;
+        // get user input as password for checking its validity
         System.out.println("Please enter a password : ");
         password = input.nextLine();
+
         try{
             validity.passwordIsValid(password);
 
@@ -21,10 +26,9 @@ public class Main {
             logger.error(e.getMessage());
         }
         finally {
-            System.out.println("*****************************************************");
+            System.out.println("===================> DONE <===========================");
         }
-
-        validity.passwordIsOk(password);
+        //validity.passwordIsOk(password);
     }
 }
 

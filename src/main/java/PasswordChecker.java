@@ -20,12 +20,14 @@ public class PasswordChecker {
 
     // 1. check if password exists
     public static boolean passwordExist(String password) {
-        return password.length() > 0;                       // if there is an input(no matter what kind), the function should return true
+        // if there is an input(no matter what kind), the function should return true
+        return password.length() > 0;
     }
 
     // 2. check if password length greater than 8 characters
     public static boolean passwordLength(String password) {
-        return password.length() > 8;                      // if the input(even spaces) has a number of characters greater than 8, this should return true
+        // if the input(even spaces) has a number of characters greater than 8, this should return true
+        return password.length() > 8;
     }
 
     /*
@@ -36,11 +38,13 @@ public class PasswordChecker {
         int countLowerCase = 0;                 // counts number of lower case characters
 
         for (int i = 0; i < password.length(); i++) {
-            if (((byte) password.charAt(i) >= 97) && ((byte) password.charAt(i) <= 122)) {  // In ASCII, lower case characters are between 97 and 122, inclusive
+            // In ASCII, lower case characters are between 97 and 122, inclusive
+            if (((byte) password.charAt(i) >= 97) && ((byte) password.charAt(i) <= 122)) {
                 countLowerCase++;
             }
         }
-        return (countLowerCase > 0);   //if this returns true, there is more than one Lower Case character in the password given by the user
+        //if this returns true, there is more than one Lower Case character in the password given by the user
+        return (countLowerCase > 0);
     }
 
     /*
@@ -49,11 +53,13 @@ public class PasswordChecker {
     public static boolean checkUpperCaseCharacter(String password) {
         int countUpperCase = 0;       // counts number of upper case characters
         for (int i = 0; i < password.length(); i++) {
-            if (((byte) password.charAt(i) >= 65) && ((byte) password.charAt(i) <= 90)) { // In ASCII, upper case characters are between 90 and 65, inclusive
+            // In ASCII, upper case characters are between 90 and 65, inclusive
+            if (((byte) password.charAt(i) >= 65) && ((byte) password.charAt(i) <= 90)) {
                 countUpperCase++;
             }
         }
-        return (countUpperCase > 0);   // if this returns true, there is more than one Upper Case case character in th password given by the user
+        // if this returns true, there is more than one Upper Case case character in th password given by the user
+        return (countUpperCase > 0);
     }
 
     // 5. check if the password contains at least one numeric character
