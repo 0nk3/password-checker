@@ -63,7 +63,7 @@ class Validity extends PasswordChecker {
     // Counter to keep track of how many conditions are passed
     public static int passedConditionsCounter = 0;
 
-    void passwordIsOk(String password) {
+    boolean passwordIsOk(String password) {
         if (passwordExist(password)) {
             passedConditionsCounter++;
         }
@@ -82,12 +82,7 @@ class Validity extends PasswordChecker {
         if (checkSpecialCharacter(password)) {
             passedConditionsCounter++;
         }
-        if (passedConditionsCounter >= minimum) {
-            logger.log(Level.DEBUG, "password is ok");
-        } else {
-            logger.log(Level.DEBUG,"password is not ok");
-
-        }
+    return (passedConditionsCounter >=minimum);
     }
 
 }

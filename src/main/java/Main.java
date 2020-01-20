@@ -1,3 +1,4 @@
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,9 +22,10 @@ public class Main {
 
         try{
             validity.passwordIsValid(password);
+            System.out.println(validity.passwordIsOk(password) ? "User password is ok" : "User password is not ok" );
 
         }catch(Exception e){
-            logger.error(e.getMessage());
+            logger.log(Level.DEBUG, e.getMessage());
         }
         finally {
             System.out.println("===================> DONE <===========================");
