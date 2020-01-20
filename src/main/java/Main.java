@@ -22,7 +22,7 @@ public class Main {
 
         try{
             validity.passwordIsValid(password);
-            System.out.println(validity.passwordIsOk(password) ? "User password is ok" : "User password is not ok" );
+            System.out.println(validity.passwordIsOk(password) ? "User password ok" : "User password not ok" );
 
         }catch(Exception e){
             logger.log(Level.DEBUG, e.getMessage());

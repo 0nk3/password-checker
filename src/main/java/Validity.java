@@ -82,7 +82,7 @@ class Validity extends PasswordChecker {
         if (checkSpecialCharacter(password)) {
             passedConditionsCounter++;
         }
-    return (passedConditionsCounter >=minimum);
+    return (passedConditionsCounter >minimum);
     }
 
 }
