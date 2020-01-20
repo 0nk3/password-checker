@@ -3,6 +3,7 @@
  * Description : PasswordIsValid and PasswordISOk Methods   *
  * ******************************************************** */
 
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,33 +24,35 @@ class Validity extends PasswordChecker {
         int passedConditions = 6;
 
         if (!passwordExist(password)) {
-            logger.error("password should exist");
+            logger.log(Level.ERROR, "password should exist");
             passedConditions--;
         }
         if (!passwordLength(password)) {
-            logger.error("password should be longer than than 8 characters");
+            logger.log(Level.ERROR, "password should be longer than than 8 characters");
             passedConditions--;
         }
         if (!checkLowerCaseCharacter(password)) {
-            logger.error("password should have at least one lowercase letter");
+            logger.log(Level.ERROR, "password should have at least one lowercase letter");
             passedConditions--;
         }
         if (!checkUpperCaseCharacter(password)) {
-            logger.error("password should have at least one uppercase letter");
+            logger.log(Level.ERROR, "password should have at least one uppercase letter");
             passedConditions--;
         }
         if (!checkNumber(password)) {
-            logger.error("password should at least have one digit");
+            logger.log(Level.ERROR, "password should at least have one digit");
             passedConditions--;
         }
         if (!checkSpecialCharacter(password)) {
-            logger.error("password should have at least one special character");
+            logger.log(Level.ERROR,"password should have at least one special character");
             passedConditions--;
-        }if(passedConditions<6){
-            logger.debug("password is not ok");
+        }
+        if(passedConditions<6){
+            logger.log(Level.DEBUG, "password is not ok");
         }
         else {
-            logger.debug("password is ok");
+            logger.log(Level.DEBUG, "password is ok");
+
         }
         // the value of passed conditions is expected to be 6  if non of the conditions failed.
         return (passedConditions == 6);
@@ -80,9 +83,9 @@ class Validity extends PasswordChecker {
             passedConditionsCounter++;
         }
         if (passedConditionsCounter >= minimum) {
-            logger.debug("password is ok");
+            logger.log(Level.DEBUG, "password is ok");
         } else {
-            logger.debug("password is not ok");
+            logger.log(Level.DEBUG,"password is not ok");
 
         }
     }
