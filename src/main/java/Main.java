@@ -22,15 +22,16 @@ public class Main {
 
         try{
             validity.passwordIsValid(password);
-            System.out.println(validity.passwordIsOk(password) ? "User password ok" : "User password not ok" );
+
 
         }catch(Exception e){
             logger.log(Level.DEBUG, e.getMessage());
         }
         finally {
-            System.out.println("===================> DONE <===========================");
+            //System.out.println(validity.passwordIsOk(password) ? "\nPassword is ok" : "\nPassword is not ok" );
+            System.out.println("\n********************************** DONE ***********************************************************");
         }
-        //validity.passwordIsOk(password);
+
     }
 }
 

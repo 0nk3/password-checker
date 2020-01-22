@@ -11,7 +11,7 @@ class Validity extends PasswordChecker {
     private static final Logger logger = LogManager.getLogger(PasswordChecker.class.getName());
 
     Validity() {
-        System.out.println("********************** Password Checker **********************\n");
+        System.out.println("********************** Password Checker ********************************************************\n");
     }
 
     /* ********************************************************************* *
